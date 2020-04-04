@@ -15,6 +15,8 @@ endif()
 
 
 project(Catch2 LANGUAGES CXX VERSION 2.11.1)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 # Provide path for scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake")
@@ -65,30 +67,6 @@ endif()
 add_library(Catch2 INTERFACE)
 
 
-
-# depend on some obvious c++11 features so the dependency is transitively added dependents
-target_compile_features(Catch2
-  INTERFACE
-    cxx_alignas
-    cxx_alignof
-    cxx_attributes
-    cxx_auto_type
-    cxx_constexpr
-    cxx_defaulted_functions
-    cxx_deleted_functions
-    cxx_final
-    cxx_lambdas
-    cxx_noexcept
-    cxx_override
-    cxx_range_for
-    cxx_rvalue_references
-    cxx_static_assert
-    cxx_strong_enums
-    cxx_trailing_return_types
-    cxx_unicode_literals
-    cxx_user_literals
-    cxx_variadic_macros
-)
 
 target_include_directories(Catch2
   INTERFACE
